@@ -2,6 +2,7 @@ import { useState } from "preact/hooks";
 import { saveAs } from "../state/actions";
 import { dialog } from "../state/store";
 import { Icon } from "../ui/icons";
+import { LICENSE_NAME, SOURCE_URL } from "../config";
 
 function Modal({ title, children, foot }: { title: string; children: any; foot?: any }) {
   return (
@@ -66,7 +67,15 @@ const SHORTCUTS: [string, string][] = [
 
 export function ShortcutsDialog() {
   return (
-    <Modal title="Keyboard shortcuts">
+    <Modal
+      title="Keyboard shortcuts"
+      foot={
+        <span class="muted small">
+          Free software ({LICENSE_NAME}) ·{" "}
+          <a href={SOURCE_URL} target="_blank" rel="noopener">Source code</a> · Powered by MuPDF
+        </span>
+      }
+    >
       <table class="keys">
         {SHORTCUTS.map(([k, v]) => (
           <tr><td><kbd>{k}</kbd></td><td>{v}</td></tr>

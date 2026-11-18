@@ -39,6 +39,7 @@ const P: Record<string, string> = {
   extract: "M14 3h5v5M10 14 19 5M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6",
   copy: "M9 9h11v11H9zM5 15H4V4h11v1",
   check: "M5 12l5 5L20 7",
+  code: "m16 18 6-6-6-6M8 6l-6 6 6 6",
   keyboard: "M3 6h18v12H3zM7 10h.01M11 10h.01M15 10h.01M7 14h10",
   bold: "M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z",
   italic: "M10 4h9M5 20h9M15 4 9 20",

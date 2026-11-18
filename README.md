@@ -10,6 +10,8 @@ Ah, a paywall! For a feature as rich and robust as highlighting text, I should h
 
 Oh, okay. Well instead of doing that or searching the web for an alternative utility I'll just burn some tokens and make my own. 
 
+Does this have feature parity with Acrobat? No. I just needed something to fill out a doc and I didn't want to be prompted to cough up my lunch money every few minutes. 
+
 ---
 
 A fast, private PDF editor that runs in your browser. It works entirely offline: nothing is uploaded and there are no accounts. It's built on [MuPDF](https://mupdf.com/) (compiled to WebAssembly), which runs in a Web Worker so the UI never freezes.
@@ -70,4 +72,18 @@ npm run typecheck
 
 The MuPDF document is the single source of truth, and each edit is one MuPDF journal step (that's how undo works). Saving never writes the live document, because that breaks MuPDF's undo. Instead, saving replays the logged edits onto a fresh copy of the original file and garbage-collects it.
 
-**License note:** MuPDF is AGPL-3.0. 
+## Deploy (Cloudflare Workers)
+
+The app is plain static files, so it deploys as a static-assets Worker. The settings are in `cloudflare.config.ts`: the Worker is named `pdf-editor`, served at `pdf-editor.t.erminally.online`, and unknown paths fall back to `index.html`.
+
+```bash
+npx cf auth login        # once
+npm run deploy:dry-run   # build and check without uploading
+npm run deploy           # build, test, upload
+```
+
+On the first deploy, Cloudflare creates the DNS record and a TLS certificate for `pdf-editor.t.erminally.online`, so there's nothing to set up by hand. Deploying fails if a DNS record for that hostname already exists; delete that record first. Caching rules for the hashed assets are in `public/_headers`.
+
+## License
+
+[AGPL-3.0](LICENSE). This app is built on [MuPDF](https://mupdf.com/), which is AGPL-licensed, so the app as a whole is AGPL too. Anyone using a hosted copy is entitled to its source code: it's at <https://github.com/thompsonwill/not-terrible-pdf-editor>, and the app links there. If you host a modified version, publish your changes and point the link in `src/config.ts` at your repository.

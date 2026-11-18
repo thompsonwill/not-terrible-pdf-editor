@@ -19,6 +19,7 @@ import {
   type Tool,
 } from "../state/store";
 import { Icon } from "../ui/icons";
+import { LICENSE_NAME, SOURCE_URL } from "../config";
 
 const TOOL_GROUPS: { id: Tool; label: string; key?: string }[][] = [
   [
@@ -189,6 +190,9 @@ export function Toolbar() {
       </div>
       <div class="tgroup">
         <Btn icon="keyboard" label="Keyboard shortcuts (?)" onClick={() => (dialog.value = "shortcuts")} />
+        <a class="tb" href={SOURCE_URL} target="_blank" rel="noopener" title={`Source code (free software, ${LICENSE_NAME})`} aria-label="Source code">
+          <Icon name="code" />
+        </a>
         <Btn icon="panel" label="Toggle properties & comments" onClick={() => (showSide.value = !showSide.value)} active={showSide.value} disabled={!has} />
       </div>
     </header>

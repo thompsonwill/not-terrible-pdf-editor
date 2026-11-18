@@ -26,6 +26,7 @@ import { SaveDialog, ShortcutsDialog } from "./panels/Dialogs";
 import { Viewer } from "./viewer/Viewer";
 import { copySelection } from "./tools/SelectionMenu";
 import { Icon } from "./ui/icons";
+import { LICENSE_NAME, SOURCE_URL } from "./config";
 
 const isTyping = (t: EventTarget | null) => {
   const el = t as HTMLElement | null;
@@ -107,6 +108,11 @@ function Empty() {
         <p>Drop a file anywhere, or</p>
         <button class="btn primary big" onClick={openDialog}>Choose PDF…</button>
         <p class="muted small">Everything happens on this computer. Nothing is uploaded.</p>
+        <p class="muted small">
+          Free software under the {LICENSE_NAME} ·{" "}
+          <a href={SOURCE_URL} target="_blank" rel="noopener">Source code</a> · Powered by{" "}
+          <a href="https://mupdf.com/" target="_blank" rel="noopener">MuPDF</a>
+        </p>
       </div>
     </div>
   );

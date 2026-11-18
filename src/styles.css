@@ -59,6 +59,8 @@ input, select, textarea { font: inherit; color: inherit; }
 .tb.on { background: var(--accent-soft); color: var(--accent); }
 .tb:disabled { opacity: 0.35; cursor: default; }
 .tb.text { font-size: 13px; padding: 0 8px; }
+a.tb { color: inherit; text-decoration: none; }
+.empty-card a { color: var(--accent); }
 .tb.zoom { min-width: 54px; font-variant-numeric: tabular-nums; }
 .tb.small { min-width: 24px; height: 24px; padding: 0 2px; }
 .tb.danger:hover { color: var(--danger); }
