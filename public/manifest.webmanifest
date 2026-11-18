@@ -1,0 +1,11 @@
+{
+  "name": "PDF Editor",
+  "short_name": "PDF Editor",
+  "description": "Edit, annotate, sign and organize PDFs locally. Nothing is uploaded.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2b2d31",
+  "theme_color": "#d93a2f",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }],
+  "file_handlers": [{ "action": "/", "accept": { "application/pdf": [".pdf"] }, "launch_type": "single-client" }]
+}
